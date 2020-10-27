@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Navigation Bar Title ----------->
+    <title>ImageN Editor</title>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/kousik19/foto.js/master/foto.min.js"></script>
+
+  </head>
+  
+<div class="file-upload-section" onclick="selectImage()">
+  <input id="foto-file" type="file">
+  Choose Image
+</div>
+
+  <div class="upper-buttons-section">
+    <table class="buttons-table">
+      <tr>
+        <td> <button class="operation-btn" onclick="crop()"> Crop </button>
+         </td>
+        <td> <button class="operation-btn" onclick="flipVertically()">
+          Flip
+          </button></td>
+        <td><button class="operation-btn" onclick="displayRange()">
+          Rotate
+          <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(this)">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  
+  
+<div class="img-container">
+  <img id="foto-image" class="image" />
+</div>
+
+  <div class="buttons-section">
+    <table class="buttons-table">
+      <tr> 
+      <td>
+        <button class="operation-btn" onclick="makeGrayScale()"> GrayScale </button></td>
+        <td> <button class="operation-btn" onclick="makeBright()"> Bright </button></td>
+      <td><button class="operation-btn" onclick="makeDark()"> Darker </button></td>
+      </tr>
+      
+      <tr>
+        <td> <button class="operation-btn" onclick="makeBlur()">
+          Blur
+          </button></td>
+        <td> <button class="operation-btn" onclick="makeEmboss()">
+          Emboss
+          </button></td>
+        <td> <button class="operation-btn" onclick="makeSharp()">
+          Sharp
+          </button></td>
+     </tr>
+      
+      <tr>
+        <td>
+          <input type="color" id="color-picker" value="#000000" oninput ="makeColorize(this)" />
+          <button class="operation-btn" onlclick="openColorpicker()">
+             Colorize
+          </button>
+        </td>
+        
+        <td>
+          <input type="color" id="colorize-color-picker" value="#000000" oninput="applyColorFilter(this)" />
+          <button class="operation-btn" onclick="openColorizeColorPicker()">
+            Color Filter
+          </button>
+        </td>
+      <td>
+        <button class="operation-btn" onclick="makeTransparent()">
+          Transparent
+        </button>
+        </td>
+      </tr>
+      <tr>
+       <td colspan="3"> <button class="operation-btn download-btn" onclick="download()">
+         Download
+         </button></td>
+      </tr>
+      
+    </table>
+  </div>
+  
+  </html>
