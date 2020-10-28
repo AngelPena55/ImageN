@@ -51,3 +51,20 @@ function rotate(t) {
   foto.rotate(t);
   
 }
+function flipVertically() {
+  foto.flipVertically();
+  
+}
+function flipHorizontally() {
+  foto.flipHorizontally();
+  
+}
+function crop() {
+  foto.cropSelected();
+  
+}
+function makeTransparent() {
+  foto.makeTransparent();
+  
+}
+
