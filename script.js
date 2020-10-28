@@ -47,3 +47,7 @@ function makeColorize(elem) {
   var color = elem.value;
   foto.colorize(color);
 }
+function rotate(t) {
+  foto.rotate(t);
+  
+}
