@@ -67,4 +67,6 @@ function makeTransparent() {
   foto.makeTransparent();
   
 }
-
+function Saturation(t) {
+  document.getElementById("foto-image").style.filter = `saturate(${t}%)`;
+}
