@@ -68,19 +68,19 @@ function makeTransparent() {
   
 }
 function Saturation(value){
-
-    var i, j;
+    var x, y;
     var t = foto.imageData;
-
     var width = foto.imageWidth, height = foto.imageHeight;
 
     if (value === undefined){
       value = 1.0;
     }
+
     var satLevel = value;
     var redLumConst = 0.3086;
     var greenLumConst = 0.6094;
     var blueLumConst = 0.0820;
+
     var a = (1 - satLevel) * redLumConst + satLevel
     var b = (1 - satLevel) * redLumConst;
     var c = (1 - satLevel) * redLumConst;
@@ -90,9 +90,12 @@ function Saturation(value){
     var g = (1 - satLevel) * blueLumConst;
     var h = (1 - satLevel) * blueLumConst;
     var i = (1 - satLevel) * blueLumConst + satLevel;
-    for (i = 0; i < height; i++){
-      for(j  = 0; j < width; j++){
-        var pix = (i * width + j) * 4;
+
+    for (x = 0; x < height; x++){
+      for(y  = 0; y < width; y++){
+
+        var pix = (x * width + y) * 4;
+
         t.data[pix]   = a * t.data[pix] + d * t.data[pix + 1] + g * t.data[pix + 2];
 				t.data[pix + 1] = b * t.data[pix] + e * t.data[pix + 1] + h * t.data[pix + 2];
 				t.data[pix + 2]  = c * t.data[pix] + f * t.data[pix + 1] + i * t.data[pix + 2];
@@ -100,6 +103,5 @@ function Saturation(value){
     }
 
     foto.operationEditedCtx.putImageData(t,0,0);
-    
     foto.previewImage();
 }
