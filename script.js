@@ -71,37 +71,48 @@ function Saturation(value){
     var x, y;
     var t = foto.imageData;
     var width = foto.imageWidth, height = foto.imageHeight;
+    
+    //Value ranges from 0.0 to 300.0 and the default is 100.0
+    //divide by 100.0 to make it simple values ranging from 0.0 to 3.0
     value /= 100.0;
+
+    //In case of error in value, set it to default
     if (value === undefined){
       value = 1.0;
     }
 
+    //satLevel is the level at which user wants to saturate or desaturate image
+    //redLumConst, greenLumConst, and blueLumConst are luminance constants that help determine the luminance of the color
     var satLevel = value;
     var redLumConst = 0.3086;
     var greenLumConst = 0.6094;
     var blueLumConst = 0.0820;
-
-    var a = (1 - satLevel) * redLumConst + satLevel
-    var b = (1 - satLevel) * redLumConst;
-    var c = (1 - satLevel) * redLumConst;
-    var d = (1 - satLevel) * greenLumConst;
-    var e = (1 - satLevel) * greenLumConst + satLevel;
-    var f = (1 - satLevel) * greenLumConst;
-    var g = (1 - satLevel) * blueLumConst;
-    var h = (1 - satLevel) * blueLumConst;
-    var i = (1 - satLevel) * blueLumConst + satLevel;
+    
+    //multiply the saturation level by the constants of each color
+    var a = (1.0 - satLevel) * redLumConst + satLevel
+    var b = (1.0 - satLevel) * redLumConst;
+    var c = (1.0 - satLevel) * redLumConst;
+    var d = (1.0 - satLevel) * greenLumConst;
+    var e = (1.0 - satLevel) * greenLumConst + satLevel;
+    var f = (1.0 - satLevel) * greenLumConst;
+    var g = (1.0 - satLevel) * blueLumConst;
+    var h = (1.0 - satLevel) * blueLumConst;
+    var i = (1.0 - satLevel) * blueLumConst + satLevel;
 
     for (x = 0; x < height; x++){
       for(y  = 0; y < width; y++){
 
+        //traverse each pixel
         var pix = (x * width + y) * 4;
 
+        //mutilply each pixel cell by the result of the above calculation to alter the color of the original image
         t.data[pix]   = a * t.data[pix] + d * t.data[pix + 1] + g * t.data[pix + 2];
 				t.data[pix + 1] = b * t.data[pix] + e * t.data[pix + 1] + h * t.data[pix + 2];
 				t.data[pix + 2]  = c * t.data[pix] + f * t.data[pix + 1] + i * t.data[pix + 2];
       }
     }
 
+    //save image and preview
     foto.operationEditedCtx.putImageData(t,0,0);
     foto.previewImage();
 }
