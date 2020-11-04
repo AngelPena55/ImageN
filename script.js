@@ -11,7 +11,36 @@ function selectImage(){
 }
 
 function makeGrayScale() {
-  foto.grayscale()
+    //foto.grayscale();
+    //Get the CanvasPixelArray
+    var imageData = foto.imageData.data;
+
+    //length is equal to each pixel being made up of 4 elements (Red, Green, Blue and Alpha)
+    var arraylength = foto.imageWidth * foto.imageHeight * 4;
+
+    var gray=0;
+
+    //Change each pixel starting from the bottom right to the top left
+    //Typically (R+G+B)/3 or R/3 + G/3 + B/3 (for overflow errors)
+    //But weighted method (luminosity method) weighs RGB according to their wavelengths
+    // gray = 0.299*R + 0.587*G + 0.114*B
+
+    for (var i = arraylength-1 ; i>0 ;i-=4) {
+
+        //Red= i-3, Green = i-2, Blue = i-1, Alpha = i
+        //Get our gray shade using the weighted method
+        gray = 0.299 * imageData[i-3] + 0.587 * imageData[i-2] + 0.114 * imageData[i-1];
+
+        //Set our 3 RGB channels to the computed gray ignoring the alpha channel
+        imageData[i-3] = gray;
+        imageData[i-2] = gray;
+        imageData[i-1] = gray;
+    }
+
+    //save image and preview
+    foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    //foto.operationOrgCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
 }
 
 function makeBright() {
