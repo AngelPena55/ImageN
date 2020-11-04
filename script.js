@@ -71,7 +71,7 @@ function Saturation(value){
     var x, y;
     var t = foto.imageData;
     var width = foto.imageWidth, height = foto.imageHeight;
-
+    value /= 100.0;
     if (value === undefined){
       value = 1.0;
     }
