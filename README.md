@@ -5,6 +5,8 @@ such as fade,special effects,crop the photo,rotate the photo clockwise and antic
 
 # Installation Guide
 
+If the user wants to run the program in his/her local system.
+
 **Step 1:** Have NodeJs installed to your system. 
 This [guide](https://www.edureka.co/blog/node-js-installation/) will help.
 
@@ -16,18 +18,35 @@ This [guide](https://www.edureka.co/blog/node-js-installation/) will help.
 **Step 4:** To run the program type in the terminal 
 `node script.js`
 
+# Stack 
+**Front End**
 
-# Features
+Since this application is static we used 
 
+ - HTML (Document Structure)
+ - CSS  (Styling the webpage)
+ 
+**Backend**
+
+- NodeJs (JS runtime environment)
+- Vanilla Javascript (Programming Language)
+
+# Aglorithms 
 
 
 
 # Usage Examples
 
 
-
-
-
 # Contributers
+Gustavo Flores
+
+Kenneth Woo
+
+Josue Flores
+
+Sai Pappu
+
+Angel Pena
 
 
