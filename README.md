@@ -41,7 +41,7 @@ Click [here](https://paint-editor2020.glitch.me/) to visit it
 
 ## Gaussian Blur
 
-Bluring is a very common image manipulation feature found in most image editing softwares. A gaussian Blur basically uses a gaussian function to apply some transformation to an individual pixel. This can be used in pre-processing as wel as for other post processing usecases. 
+Bluring is a very common image manipulation feature found in most image editing softwares. A gaussian Blur basically uses a gaussian function to apply some transformation to an individual pixel. This can be used in pre-processing as well as for other post processing usecases. 
 This the formula for a 2D Gaussian Function for the blur
 
 ![Screen Shot 2020-11-05 at 9 17 22 PM](https://user-images.githubusercontent.com/20531977/98329643-8bc9e600-1fad-11eb-8211-a97c185dcbf0.png)
@@ -57,11 +57,29 @@ This is an example of how gaussian blur in action
 ![Screen Shot 2020-11-05 at 9 32 11 PM](https://user-images.githubusercontent.com/20531977/98330018-5ffb3000-1fae-11eb-9891-e58634049b4b.png)
 
 ## Saturation
+Saturation is the intensity or depth of colors found within an image. The more saturated an image is, the more vibrant each color of the image appears and the less saturated an image is the more muted and gray each color becomes, similarly to a grayscale effect. Due to this, saturation algorithms often depend on determining and altering the luminance or brightness of the RGB found within an image. One of the most common ways to determine the luminance is to multiply the red, green, and blue data of an image by the constants of 0.3086, 0.6094, 0.0820, respectively. To make the calculations simpler, the matrix below that holds the data of the image is used. 
+                                                
+                                                |a b c 0 0|
+                                                |d e f 0 0|
+                                                |g h i 0 0|
+                                                
+Each cell of this matrix is calculated as shown below where satLevel is the level of saturation that the user defines between 0 to 3, where 0 makes a grayscale-like effect, 1 makes no effect and anything greater than one multiplies the saturation effect:
 
+                                               a = (1.0 - satLevel) * redLuminanceConst + satLevel
+                                               b = (1.0 - satLevel) * redLuminanceConst;
+                                               c = (1.0 - satLevel) * redLuminanceConst;
+                                               d = (1.0 - satLevel) * greenLuminanceConst;
+                                               e = (1.0 - satLevel) * greenLuminanceConst + satLevel;
+                                               f = (1.0 - satLevel) * greenLuminanceConst;
+                                               g = (1.0 - satLevel) * blueLumluminanceConst;
+                                               h = (1.0 - satLevel) * blueLuminanceConst;
+                                               i = (1.0 - satLevel) * blueLumimanceConst + satLevel;
+
+After these values are calculated, multiply them by the data matrix of the image to the respective position of the matrix from earlier in order to apply the effect to the image.
 
 ## Grayscale
 
-Grayscale is a range of gray shades from white to black, as used in a monochrome display or printout. Grayscale images are most commonly used in image processing because smaller data enables developers to do more complex operations in a shorter time. There are two main ways to achieve the blur effect. 
+Grayscale is a range of gray shades from white to black, as used in a monochrome display or printout. Grayscale images are most commonly used in image processing because smaller data enables developers to do more complex operations in a shorter time. There are two main ways to achieve the grayscale effect. 
 
 **Average Method**
 
