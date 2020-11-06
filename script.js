@@ -43,12 +43,53 @@ function makeGrayScale() {
     foto.previewImage();
 }
 
+//Brightness Filter
 function makeBright() {
-  foto.makeBright();
+    //foto.makeBright();
+    //Get the CanvasPixelArray
+    var imageData = foto.imageData.data;
+    var width = foto.imageWidth;
+    var height = foto.imageHeight;
+
+    //length is equal to each pixel being made up of 4 elements (Red, Green, Blue and Alpha)
+    var arraylength = width * height * 4;
+
+        for (var i = arraylength-1 ; i>0 ;i-=4) 
+        {
+          // This adds 10% to its current RGB values.
+         imageData[i-3] = 1.1 *imageData[i-3];
+         imageData[i-2] = 1.1 *imageData[i-2];
+         imageData[i-1] = 1.1 *imageData[i-1];
+         
+        }
+    //save image and preview
+    foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
 }
 
+
+
 function makeDark() {
-  foto.makeDark();
+ // foto.makeDark();
+    //Get the CanvasPixelArray
+    var imageData = foto.imageData.data;
+    var width = foto.imageWidth;
+    var height = foto.imageHeight;
+
+    //length is equal to each pixel being made up of 4 elements (Red, Green, Blue and Alpha)
+    var arraylength = width * height * 4;
+
+        for (var i = arraylength-1 ; i>0 ;i-=4) 
+        {
+          // This gets rid of 10% to its current RGB values.
+         imageData[i-3] = 0.9 *imageData[i-3];
+         imageData[i-2] = 0.9 *imageData[i-2];
+         imageData[i-1] = 0.9 *imageData[i-1];
+         
+        }
+    //save image and preview
+    foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
 }
 
 function makeBlur() {
