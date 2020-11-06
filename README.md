@@ -31,6 +31,12 @@ Since this application is static we used
 - NodeJs (JS runtime environment)
 - Vanilla Javascript (Programming Language)
 
+**Deployment**
+
+Used Glitch to deploy the website.
+
+Click [here](https://paint-editor2020.glitch.me/) to visit it 
+
 # Aglorithms 
 
 ## Gaussian Blur
