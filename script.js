@@ -138,6 +138,11 @@ function rotateRight(){
 	// rotate clockwise by 90 degrees
 	document.querySelector("#foto-image").style.transform = 'rotate(' + currentRotation + 'deg)';
 }
+// rotate image using slider
+function rotate(t) {
+  //either rotate image clockwise or counter clockwise 
+  document.querySelector("#foto-image").style.transform = 'rotate(' + t + 'deg)';
+}
 
 function flipVertically() {
   foto.flipVertically();
