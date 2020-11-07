@@ -186,3 +186,23 @@ function Saturation(value){
     foto.operationEditedCtx.putImageData(t,0,0);
     foto.previewImage();
 }
+function Opacity(value){
+    var opacity = value;
+    var imageData = foto.imageData.data;
+    var arraylength = foto.imageWidth * foto.imageHeight * 4;
+
+    //Value ranges from 0.0 to 255.0 and the default is 0.0
+    //In case of error in value, set it to default (no transparency)
+    if (opacity === undefined){
+        opacity = 255.0;
+    }
+
+    //loop through array but change only the Alpha level to match the inputted opacity value
+    for (var i = arraylength-1 ; i>0 ;i-=4) {
+        imageData[i] = opacity;
+    }
+
+    //save image and preview
+    foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
+}
