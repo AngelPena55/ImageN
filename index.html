@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,31 +21,43 @@
 
   <div class="upper-buttons-section">
     <table class="buttons-table">
-      <tr>
-        <td> <button class="operation-btn" onclick="crop()"> Crop </button>
-         </td>
-        <td> <button class="operation-btn" onclick="flipVertically()">
-          Flip vertically
-          </button></td>
-          <td> <button class="operation-btn" onclick="flipHorizontally()">
-            Flip horizontally
-            </button></td>
-        <td><button class="operation-btn" onclick="displayRange()">
-          Rotate
-          <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(value)">
-          </button>
-        </td>
-        <td><button class="operation-btn" onclick="displayRange()">
-          Saturation
-          <input type="range" id="rotate-range" value="100.0" min="0.0" max="300.0" onchange="Saturation(value)">
-          </button>
-        </td>
-        <td><button class="operation-btn" onclick="displayRange()">
-          Opacity
-          <input type="range" id="rotate-range" value="255.0" min="0.0" max="255.0" onchange="Opacity(value)">
-        </button>
-        </td>
-      </tr>
+        <tr>
+            <td>
+                <button class="operation-btn" onclick="crop()"> Crop </button>
+            </td>
+            <td>
+                <button class="operation-btn" onclick="flipVertically()">
+                    Flip vertically
+                </button>
+            </td>
+            <td>
+                <button class="operation-btn" onclick="flipHorizontally()">
+                    Flip horizontally
+                </button>
+            </td>
+            <td>
+                <button class="operation-btn" onclick="rotateLeft()">
+                    Rotate Left
+                </button>
+            </td>
+            <td>
+                <button class="operation-btn" onclick="rotateRight()">
+                    Rotate Right
+                </button>
+            </td>
+            <td>
+                <button class="operation-btn" onclick="displayRange()">
+                    Saturation
+                    <input type="range" id="rotate-range" value="100.0" min="0.0" max="300.0" onchange="Saturation(value)">
+                </button>
+            </td>
+            <td>
+                <button class="operation-btn" onclick="displayRange()">
+                    Opacity
+                    <input type="range" id="rotate-range" value="255.0" min="0.0" max="255.0" onchange="Opacity(value)">
+                </button>
+            </td>
+        </tr>
     </table>
   </div>
   

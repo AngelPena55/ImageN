@@ -1,4 +1,5 @@
-
+// Global variable for image rotation
+var currentRotation = 0;
 
 var foto;
 window.onload = function() {
@@ -117,10 +118,27 @@ function makeColorize(elem) {
   var color = elem.value;
   foto.colorize(color);
 }
-function rotate(t) {
-  foto.rotate(t);
-  
+
+//Image Rotation
+// rotate image to left
+function rotateLeft(){
+  	// update number of image rotation
+	// negative number makes rotation go counter clockwise
+	currentRotation += -90;
+
+	// rotate counter clockwise by 90 degrees
+	document.querySelector("#foto-image").style.transform = 'rotate(' + currentRotation + 'deg)';
 }
+// rotate image to right
+function rotateRight(){
+  	// update number of image rotation
+	// positive number makes rotation go clockwise
+	currentRotation += 90;
+
+	// rotate clockwise by 90 degrees
+	document.querySelector("#foto-image").style.transform = 'rotate(' + currentRotation + 'deg)';
+}
+
 function flipVertically() {
   foto.flipVertically();
   
