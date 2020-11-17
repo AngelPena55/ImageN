@@ -1,5 +1,4 @@
-// Global variable for image rotation
-var currentRotation = 0;
+
 
 var foto;
 window.onload = function() {
@@ -10,6 +9,9 @@ window.onload = function() {
 function selectImage(){
   document.getElementById("foto-file").click();
 }
+
+
+// GRAYSCALE FILTER --------------------------------------------------------------------------------------
 
 function makeGrayScale() {
     //foto.grayscale();
@@ -44,7 +46,10 @@ function makeGrayScale() {
     foto.previewImage();
 }
 
-//Brightness Filter
+
+//Brightness Filter ---------------------------------------------------------------------------------------
+
+
 function makeBright() {
     //foto.makeBright();
     //Get the CanvasPixelArray
@@ -70,6 +75,8 @@ function makeBright() {
 
 
 
+// MAKE DARK FILTER ------------------------------------------------------------------------------------
+
 function makeDark() {
  // foto.makeDark();
     //Get the CanvasPixelArray
@@ -93,73 +100,9 @@ function makeDark() {
     foto.previewImage();
 }
 
-function makeBlur() {
-  foto.applyBlurFilter();
-}
 
-function makeEmboss() {
-  foto.applyEmbossFilter();
-}
+// Saturation Filter ---------------------------------------------------------------------------------------------
 
-function makeSharp() {
-  foto.applySharpFilter();
-  
-}
-
-function download() {
-  foto.export();
-}
-
-function openColorpicker() {
-  document.getElementById("color-picker").click();
-}
-
-function makeColorize(elem) {
-  var color = elem.value;
-  foto.colorize(color);
-}
-
-//Image Rotation
-// rotate image to left
-function rotateLeft(){
-  	// update number of image rotation
-	// negative number makes rotation go counter clockwise
-	currentRotation += -90;
-
-	// rotate counter clockwise by 90 degrees
-	document.querySelector("#foto-image").style.transform = 'rotate(' + currentRotation + 'deg)';
-}
-// rotate image to right
-function rotateRight(){
-  	// update number of image rotation
-	// positive number makes rotation go clockwise
-	currentRotation += 90;
-
-	// rotate clockwise by 90 degrees
-	document.querySelector("#foto-image").style.transform = 'rotate(' + currentRotation + 'deg)';
-}
-// rotate image using slider
-function rotate(t) {
-  //either rotate image clockwise or counter clockwise 
-  document.querySelector("#foto-image").style.transform = 'rotate(' + t + 'deg)';
-}
-
-function flipVertically() {
-  foto.flipVertically();
-  
-}
-function flipHorizontally() {
-  foto.flipHorizontally();
-  
-}
-function crop() {
-  foto.cropSelected();
-  
-}
-function makeTransparent() {
-  foto.makeTransparent();
-  
-}
 function Saturation(value){
     var x, y;
     var t = foto.imageData;
@@ -209,6 +152,57 @@ function Saturation(value){
     foto.operationEditedCtx.putImageData(t,0,0);
     foto.previewImage();
 }
+
+
+// Make Blur Filter ---------------------------------------------------------------------------------------
+
+
+function makeBlur() {
+  foto.applyBlurFilter();
+}
+
+function makeEmboss() {
+  foto.applyEmbossFilter();
+}
+
+function makeSharp() {
+  foto.applySharpFilter();
+  
+}
+
+function download() {
+  foto.export();
+}
+
+function openColorpicker() {
+  document.getElementById("color-picker").click();
+}
+
+function makeColorize(elem) {
+  var color = elem.value;
+  foto.colorize(color);
+}
+function rotate(t) {
+  foto.rotate(t);
+  
+}
+function flipVertically() {
+  foto.flipVertically();
+  
+}
+function flipHorizontally() {
+  foto.flipHorizontally();
+  
+}
+function crop() {
+  foto.cropSelected();
+  
+}
+function makeTransparent() {
+  foto.makeTransparent();
+  
+}
+
 function Opacity(value){
     var opacity = value;
     var imageData = foto.imageData.data;
@@ -229,3 +223,26 @@ function Opacity(value){
     foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
     foto.previewImage();
 }
+
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function mydropdownFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
