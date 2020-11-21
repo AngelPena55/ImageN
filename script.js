@@ -1,6 +1,11 @@
 
 
 var foto;
+//For drawing functionality
+var penColor = "black";
+var penCap = "round";
+var penSize = 10;
+
 window.onload = function() {
   
   foto = new Foto();
@@ -9,7 +14,54 @@ window.onload = function() {
 function selectImage(){
   document.getElementById("foto-file").click();
 }
+/*
+for drawing functionality
+function changePenColor(color){
+  penColor = color;
+}
+function changePenCap(){}
+function changePenSize(){}
+*/
+window.addEventListener("load", ()=>{
+  const canvas = document.querySelector("#canvas");
+  const context = canvas.getContext("2d");
 
+  //resizing
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+
+  //variables
+  let painting = false;
+
+  function startPosition(e){
+      painting = true;
+      draw(e);
+  }
+  function finishedPosition(){
+      painting = false;
+      context.beginPath();
+  }
+  function draw(e){
+      if(painting == false){
+      return;
+      }
+      
+      context.lineWidth= penSize;
+      context.lineCap = penCap;
+      context.strokeStyle = penColor;
+      
+      context.lineTo(e.layerX, e.layerY);
+      context.stroke();
+      context.beginPath();
+      context.moveTo(e.layerX, e.layerY);
+  }
+  e = window.event;
+  //check mouse
+  canvas.addEventListener("mousedown", startPosition);
+  canvas.addEventListener("mouseup", finishedPosition);
+  canvas.addEventListener("mousemove", draw);
+
+})
 
 // GRAYSCALE FILTER --------------------------------------------------------------------------------------
 
@@ -244,5 +296,6 @@ window.onclick = function(event) {
     }
   }
 }
+
 
 
