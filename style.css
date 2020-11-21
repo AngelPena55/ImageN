@@ -8,6 +8,10 @@ body {
   background: #2e2b2b;
 }
 
+#canvas { 
+  border: 2px solid white;
+}
+
 .img-container {
   position: absolute;
   width: 50%;
@@ -63,7 +67,6 @@ body {
 
 .buttons-table {
   width: 50%;
-  marging-top: 50%;
   left: 25%;
 }
 
