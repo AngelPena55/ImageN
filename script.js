@@ -15,13 +15,17 @@ function selectImage(){
   document.getElementById("foto-file").click();
 }
 /*
-for drawing functionality
+for drawing functionality*/
 function changePenColor(color){
   penColor = color;
 }
-function changePenCap(){}
-function changePenSize(){}
-*/
+function changePenCap(capStyle){
+  penCap = capStyle
+}
+function changePenSize(size){
+  penSize = size
+}
+
 window.addEventListener("load", ()=>{
   const canvas = document.querySelector("#canvas");
   const context = canvas.getContext("2d");
