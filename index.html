@@ -46,6 +46,43 @@
           <input type="range" id="opacity" value="255.0" min="0.0" max="255.0" onchange="Opacity(value)">
         </button>
         </td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Pen size
+          <input type="range" id="penSize" value="10" min="0" max="100" onchange="changePenSize(value)">
+        </button>
+        </td>
+        <td> <button class="operation-btn" value = "round" onclick="changePenCap(value)">
+          Round Pen Tip (Default) </button>
+        </td>
+        <td> <button class="operation-btn" value = "square" onclick="changePenCap(value)">
+          Square Pen Tip
+         </button>
+        </td>
+        <td> <button class="operation-btn" value = "butt" onclick="changePenCap(value)">
+          Butt Pen Tip  </button>
+        </td>
+        <td> <button class="operation-btn" value = "black" onclick="changePenColor(value)">
+          Black Pen (Default) </button>
+        </td>
+        <td> <button class="operation-btn" value = "white" onclick="changePenColor(value)">
+          White Pen </button>
+         </td>
+        <td> <button class="operation-btn" value = "red" onclick="changePenColor(value)">
+          Red Pen </button>
+         </td>
+         <td> <button class="operation-btn" value = "blue" onclick="changePenColor(value)">
+          Blue Pen </button>
+         </td>
+         <td> <button class="operation-btn" value = "green" onclick="changePenColor(value)">
+          Green Pen </button>
+         </td>
+         <td> <button class="operation-btn" value = "yellow" onclick="changePenColor(value)">
+          Yellow Pen </button>
+         </td>
+         <td> <button class="operation-btn" value = "purple" onclick="changePenColor(value)">
+          Purple Pen </button>
+         </td>
         <td>  
 <div class="dropdown">
   <button onclick="mydropdownFunction()" class=" operation-btn dropbtn">
