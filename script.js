@@ -25,7 +25,6 @@ function changePenCap(capStyle){
 function changePenSize(size){
   penSize = size
 }
-
 window.addEventListener("load", ()=>{
   const canvas = document.querySelector("#canvas");
   const context = canvas.getContext("2d");
@@ -41,6 +40,10 @@ window.addEventListener("load", ()=>{
       painting = true;
       draw(e);
   }
+  function touchPosition(e){
+    painting = true;
+    draw(e);
+}
   function finishedPosition(){
       painting = false;
       context.beginPath();
@@ -59,11 +62,29 @@ window.addEventListener("load", ()=>{
       context.beginPath();
       context.moveTo(e.layerX, e.layerY);
   }
+  function drawTouch(e){
+    if(painting == false){
+    return;
+    }
+    
+    context.lineWidth= penSize;
+    context.lineCap = penCap;
+    context.strokeStyle = penColor;
+    
+    context.lineTo(e.touches[0].layerX, e.touches[0].layerY);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(e.touches[0].layerX, e.touches[0].layerY);
+}
   e = window.event;
   //check mouse
   canvas.addEventListener("mousedown", startPosition);
   canvas.addEventListener("mouseup", finishedPosition);
+  canvas.addEventListener("mouseout", finishedPosition);
   canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("touchstart", touchPosition);
+  canvas.addEventListener("touchend", finishedPosition);
+  canvas.addEventListener("touchmove", drawTouch);
 
 })
 
