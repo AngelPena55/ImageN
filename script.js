@@ -1,5 +1,3 @@
-
-
 var foto;
 //For drawing functionality
 var penColor = "black";
@@ -321,6 +319,3 @@ window.onclick = function(event) {
     }
   }
 }
-
-
-
