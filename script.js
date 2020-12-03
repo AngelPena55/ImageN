@@ -40,7 +40,7 @@ window.addEventListener("load", ()=>{
   }
   function touchPosition(e){
     painting = true;
-    draw(e);
+    drawTouch(e);
 }
   function finishedPosition(){
       painting = false;
