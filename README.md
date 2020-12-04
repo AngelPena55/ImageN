@@ -49,7 +49,25 @@ Since this application is static we used
 
 Used Glitch to deploy the website.
 
-Click [here](https://paint-editor2020.glitch.me/) to visit it 
+Click [here](https://paint-editor2020.glitch.me/) to visit it
+
+# Features 
+
+Crop an Image.
+
+Flip an Image Vertically or Flip Horizontally.
+
+Rotate an Image.
+
+Adjust the Saturation of an Image.
+
+Adjust the Opacity of an Image.
+
+Change Between Pen Tips (Round, Square, Butt).
+
+Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple).
+
+Eraser for Removing Mistakes.
 
 # Aglorithms 
 
