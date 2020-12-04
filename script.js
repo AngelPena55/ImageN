@@ -295,10 +295,17 @@ function flipVertically() {
         foto.imageData = foto.operationOrgCtx.getImageData(0, 0, foto.operationOrgCanvas.width, foto.operationOrgCanvas.height);
         foto.generatePixelMatrix();
         foto.previewImage();	
-  //foto.flipVertically();
 }
 function flipHorizontally() {
-  foto.flipHorizontally();
+ 	foto.operationEditedCtx.translate(0, foto.imageHeight);
+        foto.operationEditedCtx.scale(1, -1);
+        foto.operationEditedCtx.drawImage(foto.image, 0, 0);
+        foto.operationOrgCtx.translate(0, foto.imageHeight);
+        foto.operationOrgCtx.scale(1, -1);
+        foto.operationOrgCtx.drawImage(foto.image, 0, 0);
+        foto.imageData = foto.operationOrgCtx.getImageData(0, 0, foto.operationOrgCanvas.width, foto.operationOrgCanvas.height);
+        foto.generatePixelMatrix();
+        foto.previewImage(); 
   
 }
 function crop() {
