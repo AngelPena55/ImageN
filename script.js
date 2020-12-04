@@ -125,6 +125,30 @@ function makeGrayScale() {
 //Brightness Filter ---------------------------------------------------------------------------------------
 
 
+function Brightness(value)
+{
+  var imageData = foto.imageData.data;
+  var width = foto.imageWidth;
+  var height = foto.imageHeight;
+
+  //length is equal to each pixel being made up of 4 elements (Red, Green, Blue and Alpha)
+  var arraylength = width * height * 4;
+
+      for (var i = arraylength-1 ; i>0 ;i-=4) 
+      {
+        // This adds 10% to its current RGB values.
+       imageData[i-3] = (value*0.1) * imageData[i-3];
+       imageData[i-2] = (value*0.1) * imageData[i-2];
+       imageData[i-1] = (value*0.1) * imageData[i-1];
+       
+      }
+  //save image and preview
+  foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+  foto.previewImage();
+}
+
+
+
 function makeBright() {
     //foto.makeBright();
     //Get the CanvasPixelArray
@@ -138,9 +162,9 @@ function makeBright() {
         for (var i = arraylength-1 ; i>0 ;i-=4) 
         {
           // This adds 10% to its current RGB values.
-         imageData[i-3] = 1.1 *imageData[i-3];
-         imageData[i-2] = 1.1 *imageData[i-2];
-         imageData[i-1] = 1.1 *imageData[i-1];
+         imageData[i-3] = 1+1.1 *imageData[i-3];
+         imageData[i-2] = 1+1.1 *imageData[i-2];
+         imageData[i-1] = 1+1.1 *imageData[i-1];
          
         }
     //save image and preview
