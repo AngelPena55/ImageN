@@ -286,15 +286,15 @@ function rotate(t) {
   
 }
 function flipVertically() {
-	this.operationEditedCtx.translate(this.imageWidth, 0);
-        this.operationEditedCtx.scale(-1, 1);
-        this.operationEditedCtx.drawImage(this.image, 0, 0);
-        this.operationOrgCtx.translate(this.imageWidth, 0);
-        this.operationOrgCtx.scale(-1, 1);
-        this.operationOrgCtx.drawImage(this.image, 0, 0);
-        this.imageData = this.operationOrgCtx.getImageData(0, 0, this.operationOrgCanvas.width, this.operationOrgCanvas.height);
-        this.generatePixelMatrix();
-        this.previewImage();	
+	foto.operationEditedCtx.translate(foto.imageWidth, 0);
+        foto.operationEditedCtx.scale(-1, 1);
+        foto.operationEditedCtx.drawImage(foto.image, 0, 0);
+        foto.operationOrgCtx.translate(foto.imageWidth, 0);
+        foto.operationOrgCtx.scale(-1, 1);
+        foto.operationOrgCtx.drawImage(foto.image, 0, 0);
+        foto.imageData = foto.operationOrgCtx.getImageData(0, 0, foto.operationOrgCanvas.width, foto.operationOrgCanvas.height);
+        foto.generatePixelMatrix();
+        foto.previewImage();	
   //foto.flipVertically();
 }
 function flipHorizontally() {
