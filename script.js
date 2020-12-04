@@ -262,8 +262,16 @@ function rotate(t) {
   
 }
 function flipVertically() {
-  foto.flipVertically();
-  
+	this.operationEditedCtx.translate(this.imageWidth, 0);
+        this.operationEditedCtx.scale(-1, 1);
+        this.operationEditedCtx.drawImage(this.image, 0, 0);
+        this.operationOrgCtx.translate(this.imageWidth, 0);
+        this.operationOrgCtx.scale(-1, 1);
+        this.operationOrgCtx.drawImage(this.image, 0, 0);
+        this.imageData = this.operationOrgCtx.getImageData(0, 0, this.operationOrgCanvas.width, this.operationOrgCanvas.height);
+        this.generatePixelMatrix();
+        this.previewImage();	
+  //foto.flipVertically();
 }
 function flipHorizontally() {
   foto.flipHorizontally();
