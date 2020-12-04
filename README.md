@@ -69,6 +69,21 @@ Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple).
 
 Eraser for Removing Mistakes.
 
+# Photo Filters
+
+Grayscale Filter
+
+Bright Filter
+
+Dark Filter
+
+Blur
+
+Emboss
+
+Sharp
+
+
 # Aglorithms 
 
 ## Gaussian Blur
