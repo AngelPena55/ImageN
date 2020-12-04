@@ -2,6 +2,20 @@
 An image editor with drawing capabilities. The app also includes photo editing features such as resize a given photo,addfilters 
 such as fade,special effects,crop the photo,rotate the photo clockwise and anticlockwise , add text to the photo, change hue and saturation of the photo etc.
 
+# Contributers
+Gustavo Flores
+
+Kenneth Woo
+
+Josue Flores
+
+Sai Pappu
+
+Angel Pena
+
+Kevin Mundo
+
+Josue Reyes
 
 # Installation Guide
 
@@ -96,20 +110,4 @@ The weighted method, also called luminosity method, weighs red, green and blue a
 
 `Grayscale  = 0.299R + 0.587G + 0.114B`
 
-# Usage Examples
 
-
-# Contributers
-Gustavo Flores
-
-Kenneth Woo
-
-Josue Flores
-
-Sai Pappu
-
-Angel Pena
-
-Kevin Mundo
-
-Josue Reyes
