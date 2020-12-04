@@ -49,7 +49,7 @@ Since this application is static we used
 
 Used Glitch to deploy the website.
 
-Click [here](https://paint-editor2020.glitch.me/) to visit it
+Click [here](https://paint-editor2020.glitch.me/) to visit it or search https://paint-editor2020.glitch.me/
 
 # Features 
 
