@@ -81,7 +81,7 @@ Bright Filter - Kenneth Woo
 
 Dark Filter - Kenneth Woo
 
-Blur
+Blur - Josue Reyes
 
 Emboss
 
