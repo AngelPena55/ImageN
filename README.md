@@ -63,6 +63,8 @@ Adjust the Saturation of an Image.
 
 Adjust the Opacity of an Image.
 
+Adjust the Pixelation of an Image.
+
 Change Between Pen Tips (Round, Square, Butt).
 
 Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple).
@@ -82,6 +84,8 @@ Blur
 Emboss
 
 Sharp
+
+Distortion
 
 
 # Aglorithms 
