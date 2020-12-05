@@ -276,7 +276,9 @@ function makeBlur() {
 				var index = y * width4 + c; //begining of each pixel+RGB instance
 				var indexLast = y * width4 + ((width - 1) << 2) + c;
 				var pixel = imageData[index]; //holds current color value of current pixel
-				var pixelTwo , pixelThree, pixelFour = pixel;
+				var pixelTwo = pixel;
+        var pixelThree = pixelTwo;
+        var pixelFour = pixelThree;
 				for (; index <= indexLast; index += 4) {
 					pixel = result * imageData[index] + b1 * pixelTwo + b2 * pixelThree + b3 * pixelFour;
 					imageData[index] = pixel; 
@@ -303,7 +305,9 @@ function makeBlur() {
 				var index = (x << 2) + c;
 				var indexLast = (height - 1) * width4 + (x << 2) + c;
 				var pixel = imageData[index];
-				var pixelTwo , pixelThree , pixelFour = pixel;
+				var pixelTwo = pixel;
+        var pixelThree = pixelTwo;
+        var pixelFour = pixelThree;
 				for (; index <= indexLast; index += width4) {
           //calculates the weighted average
 					pixel = result * imageData[index] + b1 * pixelTwo + b2 * pixelThree + b3 * pixelFour;
