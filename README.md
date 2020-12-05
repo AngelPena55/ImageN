@@ -71,7 +71,7 @@ Change Between Pen Tips (Round, Square, Butt). - Angel Pena
 
 Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple). - Angel Pena
 
-Eraser for Removing Mistakes. Developed by Angel Pena
+Eraser for Removing Mistakes. - Angel Pena
 
 # Photo Filters
 
