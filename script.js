@@ -255,10 +255,81 @@ function Saturation(value){
 
 // Make Blur Filter ---------------------------------------------------------------------------------------
 
-
+var blur=6.0;
 function makeBlur() {
-  foto.applyBlurFilter();
-}
+  
+  var imageData = foto.imageData.data;
+  var width = foto.imageWidth;
+  var width4 = width<<2; // shift bits to the left two times
+  var height = foto.imageHeight;
+  var q = 0.98711 * blur - 0.96330;
+  blur=blur+2;//value increases every time blur is called
+  var qq = q * q;
+		var qqq = qq * q;
+		var b0 = 1.57825 + (2.44413 * q) + (1.4281 * qq ) + (0.422205 * qqq);
+		var b1 = ((2.44413 * q) + (2.85619 * qq) + (1.26661 * qqq)) / b0;
+		var b2 = (-((1.4281 * qq) + (1.26661 * qqq))) / b0;
+		var b3 = (0.422205 * qqq) / b0; 
+		var result = 1.0 - (b1 + b2 + b3); 
+		for (var c = 0; c < 3; c++) { //goes through RGB value
+			for (var y = 0; y < height; y++) {
+				var index = y * width4 + c; //begining of each pixel+RGB instance
+				var indexLast = y * width4 + ((width - 1) << 2) + c;
+				var pixel = imageData[index]; //holds current color value of current pixel
+				var pixelTwo , pixelThree, pixelFour = pixel;
+				for (; index <= indexLast; index += 4) {
+					pixel = result * imageData[index] + b1 * pixelTwo + b2 * pixelThree + b3 * pixelFour;
+					imageData[index] = pixel; 
+					pixelFour = pixelThree;
+					pixelThree = pixelTwo;
+					pixelTwo = pixel;
+				}
+				index = y * width4 + ((width - 1) << 2) + c;
+				indexLast = y * width4 + c;
+				pixel = imageData[index];
+				pixelTwo = pixel;
+				pixelThree = pixelTwo;
+				pixelFour = pixelThree;
+				for (; index >= indexLast; index -= 4) {
+					pixel = result * imageData[index] + b1 * pixelTwo + b2 * pixelThree + b3 * pixelFour;
+					pixelFour = pixelThree;
+					pixelThree = pixelTwo;
+					pixelTwo = pixel;
+				}
+			}
+		}
+		for (var c = 0; c < 3; c++) {
+			for (var x = 0; x < width; x++) {
+				var index = (x << 2) + c;
+				var indexLast = (height - 1) * width4 + (x << 2) + c;
+				var pixel = imageData[index];
+				var pixelTwo , pixelThree , pixelFour = pixel;
+				for (; index <= indexLast; index += width4) {
+          //calculates the weighted average
+					pixel = result * imageData[index] + b1 * pixelTwo + b2 * pixelThree + b3 * pixelFour;
+					imageData[index] = pixel;
+					pixelFour = pixelThree;
+					pixelThree = pixelTwo;
+					pixelTwo = pixel;
+				} 
+				index = (height - 1) * width4 + (x << 2) + c;
+				indexLast = (x << 2) + c;
+				pixel = imageData[index];
+				pixelTwo = pixel;
+				pixelThree = pixelTwo;
+				pixelFour = pixelThree;
+				for (; index >= indexLast; index -= width4) {
+					pixel = result * imageData[index] + b1 * pixelTwo + b2 * pixelThree + b3 * pixelFour;
+					imageData[index] = pixel;
+					pixelFour = pixelThree;
+					pixelThree = pixelTwo;
+					pixelTwo = pixel;
+				}
+			}
+		} foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
+	}
+
 
 function makeEmboss() {
   foto.applyEmbossFilter();
