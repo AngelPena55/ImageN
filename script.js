@@ -12,17 +12,22 @@ window.onload = function() {
 function selectImage(){
   document.getElementById("foto-file").click();
 }
+// Drawing Functions --------------------------------------------------------------------------------------
 /*
 for drawing functionality*/
+//Changes color of pen
 function changePenColor(color){
   penColor = color;
 }
+//changes cap of the pen
 function changePenCap(capStyle){
   penCap = capStyle
 }
+//changes the size of the pen
 function changePenSize(size){
   penSize = size
 }
+//for drawing
 window.addEventListener("load", ()=>{
   const canvas = document.querySelector("#canvas");
   const context = canvas.getContext("2d");
@@ -33,19 +38,22 @@ window.addEventListener("load", ()=>{
 
   //variables
   let painting = false;
-
+  //denotes the start of a path
   function startPosition(e){
       painting = true;
       draw(e);
   }
+  //denotes the start of path on mobile
   function touchPosition(e){
     painting = true;
     drawTouch(e);
 }
+//denotes the end of the path
   function finishedPosition(){
       painting = false;
       context.beginPath();
   }
+  //draws a path
   function draw(e){
       if(painting == false){
       return;
@@ -60,6 +68,7 @@ window.addEventListener("load", ()=>{
       context.beginPath();
       context.moveTo(e.layerX, e.layerY);
   }
+  //draws a path for mobile
   function drawTouch(e){
     if(painting == false){
     return;
@@ -75,7 +84,7 @@ window.addEventListener("load", ()=>{
     context.moveTo(e.touches[0].layerX, e.touches[0].layerY);
 }
   e = window.event;
-  //check mouse
+  //checks the mouse for click, when it moves and when its released
   canvas.addEventListener("mousedown", startPosition);
   canvas.addEventListener("mouseup", finishedPosition);
   canvas.addEventListener("mouseout", finishedPosition);
