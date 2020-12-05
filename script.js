@@ -98,7 +98,6 @@ window.addEventListener("load", ()=>{
 // GRAYSCALE FILTER --------------------------------------------------------------------------------------
 
 function makeGrayScale() {
-    //foto.grayscale();
     //Get the CanvasPixelArray
     var imageData = foto.imageData.data;
 
@@ -112,7 +111,7 @@ function makeGrayScale() {
     //But weighted method (luminosity method) weighs RGB according to their wavelengths
     // gray = 0.299*R + 0.587*G + 0.114*B
 
-    for (var i = arraylength-1 ; i>0 ;i-=4) {
+    for (var i = arraylength-1; i>0; i-=4) {
 
         //Red= i-3, Green = i-2, Blue = i-1, Alpha = i
         //Get our gray shade using the weighted method
@@ -343,6 +342,120 @@ function makeBlur() {
     foto.previewImage();
 	}
 
+// PIXELATION FILTER --------------------------------------------------------------------------------------
+
+function makePixelated(value) {
+    var pixelation = value;
+    var imageData = foto.imageData.data;
+
+    //Calculate pixel array dimensions
+    var arraylength = foto.imageWidth * foto.imageHeight * 4;
+
+    //Value ranges from 1.0 to 20.0 and the default is 1.0 (no pixelation)
+    //In case of error in value, set it to default (no transparency)
+    if (pixelation === undefined){
+        pixelation = 1.0;
+    }
+
+    //loop through the pixel array, we will take the Red, Green, Blue, Alpha values of the first pixel in the
+    //sampled size which will represent the whole group of pixels chosen by the user
+    var tempRed = 0;
+    var tempGreen = 0;
+    var tempBlue = 0;
+    var tempAlpha = 0;
+
+    //keep tracking of the actual pixel we're on (starting at 0 makes it easier than 1 since we're using mod)
+    var columns = 0;
+    var rows = 0;
+    var savePixel = true;
+
+    for (var i = 0; i < arraylength; i+=4) {
+        //if next row is not modded by pixelation size, then dont save first element
+        //use element on top of it instead (if viewing it as an image of width and height)
+        if (columns === foto.imageWidth) {
+            rows++;
+            columns = 0;
+            if (rows % pixelation === 0) {
+                savePixel = true;
+            }
+            else {
+                savePixel = false;
+            }
+        }
+        else {
+            //if its divisible by pixelation size and we're saving pixels then save it (first element of the n by n box)
+            //therefore make the other pixels equivalent to this one (n by n square of pixels)
+            if (columns % pixelation === 0 && savePixel === true) {
+                tempRed = imageData[i];
+                tempGreen = imageData[i+1];
+                tempBlue = imageData[i+2];
+                tempAlpha = imageData[i+3];
+            }
+                //if its divisible by pixelation size but we're not saving pixels then we are in the middle or end of an
+                //n by n sized box so use the RGBA of the pixel above (or foto.width*4 elements to the left since it's a single array)
+            //for the current pixel as well as the following pixels
+            else if (columns % pixelation === 0 && savePixel === false) {
+                var pixelAbove = i-(foto.imageWidth*4);
+                //console.log("pixel",i,"pixel above: ", pixelAbove)
+                tempRed = imageData[pixelAbove];
+                tempGreen = imageData[pixelAbove+1];
+                tempBlue = imageData[pixelAbove+2];
+                tempAlpha = imageData[pixelAbove+3];
+
+                imageData[i] = tempRed;
+                imageData[i+1] = tempGreen;
+                imageData[i+2] = tempBlue;
+                imageData[i+3] = tempAlpha;
+            }
+            else {
+                imageData[i] = tempRed;
+                imageData[i+1] = tempGreen;
+                imageData[i+2] = tempBlue;
+                imageData[i+3] = tempAlpha;
+            }
+            columns++;
+        }
+
+    }
+    /*
+    console.log("width ",foto.imageWidth, " height: ", foto.imageHeight, " arraylength: ", arraylength);
+    console.log("pixelation: ", pixelation);
+    */
+    //save image and preview
+    foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
+}
+
+function makeDistorted() {
+    var imageData = foto.imageData.data;
+    var distortion = 100;
+
+    var tempRed = 0;
+    var tempGreen = 0;
+    var tempBlue = 0;
+    var tempAlpha = 0;
+
+    //Calculate pixel array dimensions
+    var arraylength = foto.imageWidth * foto.imageHeight * 4;
+    for (var i = 0; i < arraylength; i+=4) {
+        if (i % distortion === 0) {
+            tempRed = imageData[i];
+            tempGreen = imageData[i+1];
+            tempBlue = imageData[i+2];
+            tempAlpha = imageData[i+3];
+        }
+        else {
+            imageData[i] = tempRed;
+            imageData[i+1] = tempGreen;
+            imageData[i+2] = tempBlue;
+            imageData[i+3] = tempAlpha;
+        }
+    }
+
+    //save image and preview
+    foto.operationEditedCtx.putImageData(foto.imageData, 0, 0);
+    foto.previewImage();
+}
 
 function makeEmboss() {
   foto.applyEmbossFilter();
@@ -413,7 +526,7 @@ function Opacity(value){
     }
 
     //loop through array but change only the Alpha level to match the inputted opacity value
-    for (var i = arraylength-1 ; i>0 ;i-=4) {
+    for (var i = arraylength-1; i>0; i-=4) {
         imageData[i] = opacity;
     }
 

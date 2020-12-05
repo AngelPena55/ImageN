@@ -25,25 +25,36 @@
         <td> <button class="operation-btn" onclick="crop()">
           Crop Image </button>
          </td>
+
         <td> <button class="operation-btn" onclick="flipVertically()">
           Flip vertically
           </button></td>
+
           <td> <button class="operation-btn" onclick="flipHorizontally()">
             Flip horizontally
             </button></td>
+
         <td><button class="operation-btn" onclick="displayRange()">
           Rotate
           <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(value)">
           </button>
         </td>
+
         <td><button class="operation-btn" onclick="displayRange()">
           Saturation
           <input type="range" id="saturation" value="100.0" min="0.0" max="300.0" onchange="Saturation(value)">
           </button>
         </td>
+
         <td><button class="operation-btn" onclick="displayRange()">
           Opacity
           <input type="range" id="opacity" value="255.0" min="0.0" max="255.0" onchange="Opacity(value)">
+        </button>
+        </td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Pixelation
+          <input type="range" id="pixelation" value="1.0" min="1.0" max="20.0" onchange="makePixelated(value)">
         </button>
         </td>
 
@@ -99,6 +110,7 @@
     <button href="#" class ="operation-btn" onclick="makeBlur()">Blur Filter</button>
     <button href="#" class ="operation-btn" onclick="makeEmboss()"> Emboss Filter</button>
     <button href="#" class ="operation-btn" onclick="makeSharp()"> Sharp Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeDistorted()"> Distortion Filter</button>
   </div>
   </div>
   
