@@ -53,31 +53,33 @@ Click [here](https://paint-editor2020.glitch.me/) to visit it or search https://
 
 # Features 
 
-Crop an Image.
+Crop an Image. - Josue Flores
 
-Flip an Image Vertically or Flip Horizontally.
+Flip an Image Vertically or Flip Horizontally.  
 
-Rotate an Image.
+Rotate an Image. - Josue Flores
 
-Adjust the Saturation of an Image. Developed by Angel Pena
+Adjust the Saturation of an Image. - Angel Pena
 
-Adjust the Opacity of an Image.
+Adjust the Opacity of an Image. - Gustavo Flores
 
-Adjust the Pixelation of an Image.
+Adjust the Pixelation of an Image. - Gustavo Flores
 
-Change Between Pen Tips (Round, Square, Butt). Developed by Angel Pena
+Make a Drawing - Angel Pena
 
-Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple). Developed by Angel Pena
+Change Between Pen Tips (Round, Square, Butt). - Angel Pena
+
+Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple). - Angel Pena
 
 Eraser for Removing Mistakes. Developed by Angel Pena
 
 # Photo Filters
 
-Grayscale Filter
+Grayscale Filter - Gustavo Flores
 
-Bright Filter
+Bright Filter - Kenneth Woo
 
-Dark Filter
+Dark Filter - Kenneth Woo
 
 Blur
 
@@ -85,7 +87,7 @@ Emboss
 
 Sharp
 
-Distortion
+Distortion - Gustavo Flores
 
 
 # Aglorithms 
