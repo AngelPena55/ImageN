@@ -59,17 +59,17 @@ Flip an Image Vertically or Flip Horizontally.
 
 Rotate an Image.
 
-Adjust the Saturation of an Image.
+Adjust the Saturation of an Image. Developed by Angel Pena
 
 Adjust the Opacity of an Image.
 
 Adjust the Pixelation of an Image.
 
-Change Between Pen Tips (Round, Square, Butt).
+Change Between Pen Tips (Round, Square, Butt). Developed by Angel Pena
 
-Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple).
+Change Between Pen Colors (Black, White, Blue, Red, Green, Yellow, Purple). Developed by Angel Pena
 
-Eraser for Removing Mistakes.
+Eraser for Removing Mistakes. Developed by Angel Pena
 
 # Photo Filters
 
@@ -107,7 +107,7 @@ This is an example of how gaussian blur in action
 
 ![Screen Shot 2020-11-05 at 9 32 11 PM](https://user-images.githubusercontent.com/20531977/98330018-5ffb3000-1fae-11eb-9891-e58634049b4b.png)
 
-## Saturation
+## Saturation by Angel Pena
 Saturation is the intensity or depth of colors found within an image. The more saturated an image is, the more vibrant each color of the image appears and the less saturated an image is the more muted and gray each color becomes, similarly to a grayscale effect. Due to this, saturation algorithms often depend on determining and altering the luminance or brightness of the RGB found within an image. One of the most common ways to determine the luminance is to multiply the red, green, and blue data of an image by the constants of 0.3086, 0.6094, 0.0820, respectively. To make the calculations simpler, the matrix below that holds the data of the image is used. 
                                                 
                                                 |a b c 0 0|
