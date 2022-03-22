@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Navigation Bar Title ----------->
+    <title>ImageN Editor</title>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://rawcdn.githack.com/kousik19/foto.js/master/foto.min.js"></script>
+
+  </head>
+  
+<div class="file-upload-section" onclick="selectImage()">
+  <input id="foto-file" type="file">
+  Choose Image
+</div>
+
+  <div class="upper-buttons-section">
+    <table class="buttons-table">
+      <tr>
+        <td> <button class="operation-btn" onclick="crop()">
+          Crop Image </button>
+         </td>
+
+        <td> <button class="operation-btn" onclick="flipVertically()">
+          Flip vertically
+          </button></td>
+
+          <td> <button class="operation-btn" onclick="flipHorizontally()">
+            Flip horizontally
+            </button></td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Rotate
+          <input type="range" id="rotate-range" value="0" min="0" max="360" onchange="rotate(value)">
+          </button>
+        </td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Saturation
+          <input type="range" id="saturation" value="100.0" min="0.0" max="300.0" onchange="Saturation(value)">
+          </button>
+        </td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Opacity
+          <input type="range" id="opacity" value="255.0" min="0.0" max="255.0" onchange="Opacity(value)">
+        </button>
+        </td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Pixelation
+          <input type="range" id="pixelation" value="1.0" min="1.0" max="20.0" onchange="makePixelated(value)">
+        </button>
+        </td>
+
+        <td><button class="operation-btn" onclick="displayRange()">
+          Pen size
+          <input type="range" id="penSize" value="10" min="0" max="100" onchange="changePenSize(value)">
+        </button>
+        </td>
+        
+        
+<td>  
+<div class="dropdown">
+  <button onclick="mydropdownFunction2()" class=" operation-btn dropbtn">
+  Pen Tips
+  </button>
+  <div id ="myDropdown2" class="dropdown-content2">
+    <button href="#" class = "operation-btn" value = "round" onclick="changePenCap(value)">Round Pen Tip (Default)</button>
+    <button href="#" class = "operation-btn" value = "square" onclick="changePenCap(value)">Square Pen Tip</button>
+    <button href="#" class = "operation-btn" value = "butt" onclick="changePenCap(value)">Butt Pen Tip</button>
+  </div>
+  </div>
+</td>   
+        
+        
+<td>  
+<div class="dropdown">
+  <button onclick="mydropdownFunction3()" class=" operation-btn dropbtn">
+  Pen Color
+  </button>
+  <div id ="myDropdown3" class="dropdown-content3">
+    <button href="#" class = "operation-btn" value = "black" onclick="changePenColor(value)">Black Pen (Default)</button>
+    <button href="#" class = "operation-btn" value = "white" onclick="changePenColor(value)">White Pen</button>
+    <button href="#" class = "operation-btn" value = "red" onclick="changePenColor(value)">Red Pen</button>
+    <button href="#" class = "operation-btn" value = "blue" onclick="changePenColor(value)">Blue Pen</button>
+    <button href="#" class = "operation-btn" value = "green" onclick="changePenColor(value)">Green Pen</button>
+    <button href="#" class = "operation-btn" value = "yellow" onclick="changePenColor(value)">Yellow Pen</button>
+    <button href="#" class = "operation-btn" value = "purple" onclick="changePenColor(value)">Purple Pen</button>
+    <button href="#" class = "operation-btn" value = "#2e2b2b" onclick="changePenColor(value)">Eraser</button>
+  </div>
+  </div>
+</td>       
+        
+
+<td>  
+<div class="dropdown">
+  <button onclick="mydropdownFunction()" class=" operation-btn dropbtn">
+     Photo Filters
+  </button>
+  <div id ="myDropdown" class="dropdown-content">
+    <button href="#" class ="operation-btn" onclick="makeGrayScale()">GrayScale Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeBright()">Bright Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeDark()">Dark Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeBlur()">Blur Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeEmboss()"> Emboss Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeSharp()"> Sharp Filter</button>
+    <button href="#" class ="operation-btn" onclick="makeDistorted()"> Distortion Filter</button>
+  </div>
+  </div>
+  
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  
+  
+<div class="img-container">
+  <img id="foto-image" class="image" />
+</div>
+<canvas id = "canvas"></canvas>
+  
+  
+  
+  
+  
+  <table class="buttons-table">
+      <tr>
+       <td colspan="3"> <button class="operation-btn download-btn" onclick="download()">
+         Download Image
+         </button>
+        </td>
+      </tr>
+      
+    </table>
+  
+  </html>
